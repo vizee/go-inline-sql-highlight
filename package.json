@@ -1,0 +1,40 @@
+{
+  "name": "go-inline-sql-highlight",
+  "displayName": "Go Inline SQL Highlight",
+  "description": "Highlighting inline SQL in go strings",
+  "version": "0.0.1",
+  "publisher": "vizee",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "url": "https://github.com/vizee/go-inline-sql-highlight.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vizee/go-inline-sql-highlight/issues"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "go-inline-sql"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "go-inline-sql",
+        "path": "./syntaxes/injection.json",
+        "scopeName": "string.inline.sql",
+        "injectTo": [
+          "source.go"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.inline.sql": "sql"
+        }
+      }
+    ]
+  }
+}

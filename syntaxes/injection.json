@@ -1,0 +1,52 @@
+{
+  "scopeName": "string.inline.sql",
+  "injectionSelector": "L:source.go - string.quoted.*.go",
+  "patterns": [
+    {
+      "contentName": "meta.embedded.inline.sql",
+      "begin": "(\")\\s*(select|update|insert into)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.go"
+        },
+        "2": {
+          "name": "keyword.other.DML.sql"
+        }
+      },
+      "end": "(\")",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.go"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.sql"
+        }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.inline.sql",
+      "begin": "(`)\\s*(select|update|insert into)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.go"
+        },
+        "2": {
+          "name": "keyword.other.DML.sql"
+        }
+      },
+      "end": "(`)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.go"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.sql"
+        }
+      ]
+    }
+  ]
+}
