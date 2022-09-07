@@ -1,16 +1,16 @@
 {
   "scopeName": "string.inline.sql",
-  "injectionSelector": "L:source.go - string.quoted.*.go",
+  "injectionSelector": "L:source.go -(string.quoted.*.go,comment.block.go)",
   "patterns": [
     {
       "contentName": "meta.embedded.inline.sql",
-      "begin": "(\")\\s*(select|update|insert into)\\b",
+      "begin": "(\")(select|update|insert into)\\b",
       "beginCaptures": {
         "1": {
           "name": "punctuation.definition.string.begin.go"
         },
         "2": {
-          "name": "keyword.other.DML.sql"
+          "name": "keyword.sql"
         }
       },
       "end": "(\")",
@@ -27,13 +27,36 @@
     },
     {
       "contentName": "meta.embedded.inline.sql",
-      "begin": "(`)\\s*(select|update|insert into)\\b",
+      "begin": "(`)(select|update|insert into)\\b",
       "beginCaptures": {
         "1": {
           "name": "punctuation.definition.string.begin.go"
         },
         "2": {
-          "name": "keyword.other.DML.sql"
+          "name": "keyword.sql"
+        }
+      },
+      "end": "(`)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.go"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.sql"
+        }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.inline.sql",
+      "begin": "(\\/\\*\\s*sql\\s*\\*\\/)\\s*(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.go"
+        },
+        "2": {
+          "name": "punctuation.definition.string.begin.go"
         }
       },
       "end": "(`)",
